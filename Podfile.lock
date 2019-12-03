@@ -1,0 +1,30 @@
+PODS:
+  - PaddingLabel (1.1)
+  - Realm (3.19.0):
+    - Realm/Headers (= 3.19.0)
+  - Realm/Headers (3.19.0)
+  - RealmSwift (3.19.0):
+    - Realm (= 3.19.0)
+  - Toast-Swift (5.0.0)
+
+DEPENDENCIES:
+  - PaddingLabel (= 1.1)
+  - RealmSwift
+  - Toast-Swift (~> 5.0.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - PaddingLabel
+    - Realm
+    - RealmSwift
+    - Toast-Swift
+
+SPEC CHECKSUMS:
+  PaddingLabel: d11fee9d2be54122a037bb4a429fb5d3f2c73d58
+  Realm: 995d585bcf699aaff226715886c849a29dd3d07f
+  RealmSwift: 35f284a537989f2187b413e5917091948cb87a3f
+  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
+
+PODFILE CHECKSUM: 6095d7ee85617285b1c2a87824b15a50a1a78763
+
+COCOAPODS: 1.7.5
