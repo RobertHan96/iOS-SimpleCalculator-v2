@@ -15,7 +15,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
 //    var sortedDate =  test.sorted(byKeyPath: "date", ascending: false)
     
     func loadData() {
-        DateArrary = realm.objects(CalcHistory.self).sorted(byKeyPath: "date", ascending: false)
+        DateArrary = realm.objects(CalcHistory.self).sorted(byKeyPath: "date", ascending: true)
         self.MyTableView.reloadData()
     }
     
