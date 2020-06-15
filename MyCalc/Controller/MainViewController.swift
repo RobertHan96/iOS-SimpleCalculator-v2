@@ -21,10 +21,10 @@ class MainViewController: UIViewController {
     
     // 숫자, 연산자, = 을 입력 받아 리턴 코드에 따른 작업을 수행하는 함수
     @IBAction func btnNum(_ sender : UIButton) {
-        let input = sender.currentTitle!
+        let input = sender.currentTitle! // 숫자보다 연산자가 먼저 입력됐는지 검사
         if Cal.operaters.contains(input) == true && Cal.num1 == "" {
             print("에러 : 연산자가 먼저 입력됨")
-        } else if Cal.isCalculable(inputNum: input) == "1" {
+        }else if Cal.isCalculable(inputNum: input) == "1" {
             labelResult.text! += input
             Cal.num1 += input
         } else if Cal.isCalculable(inputNum: input) == "2" {
@@ -32,7 +32,7 @@ class MainViewController: UIViewController {
             Cal.num2 += input
         } else if Cal.isCalculable(inputNum: input) == "3" {
             if Cal.op.count >= 1 {
-                print("에러 : 이미 입력한 연산자가 존재함")
+                print("에러 : 이미 입력한 연산자나 소수점이 존재함")
                 return
             } else {
                 labelResult.text! += input
@@ -56,17 +56,7 @@ class MainViewController: UIViewController {
         
     // 소수점 표시 여부를 검사하는 액션 함수
     @IBAction func btnPoint(_ sender: Any) {
-        if labelResult.text == "" {
-            print("에러 : 소수점을 추가할 값이 없음")
-        } else {
-            labelResult.text! += "."
-            if Cal.num2 == "" {
-                Cal.num1 += "."
-            } else {
-                Cal.num2 += "."
-            }
-        }
-        print("1번 숫자:\(Cal.num1), 2번 숫자:\(Cal.num2), 연산자:\(Cal.op)")
+        Cal.makePoint(lable: labelResult)
     }
     
     // 화면에 표시된 숫자, Cal클래스내 맴버 변수 전체 삭제
