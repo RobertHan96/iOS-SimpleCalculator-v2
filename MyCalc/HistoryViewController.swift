@@ -27,8 +27,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.MyTableView!.dequeueReusableCell(withIdentifier: "HistoryTabelViewCell", for: indexPath) as! HistoryTableViewCell
-        let valueText = DateArrary?[indexPath.row].value
-        cell.labelCalc.text = (DateArrary?[indexPath.row].result)! + " = \((valueText)!) "
+        cell.labelCalc.text = DateArrary?[indexPath.row].result
         cell.labelDate.text = DateArrary?[indexPath.row].date
         return cell
     }
