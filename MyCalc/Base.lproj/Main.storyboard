@@ -23,15 +23,7 @@
                                     <constraint firstAttribute="height" constant="100" id="Cwz-wU-5pJ"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="20" bottom="130" right="8"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="0">
-                                        <attributes>
-                                            <color key="NSColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="25" name="NanumGothicBold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="20" defaultTabInterval="20" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <attributedString key="attributedText"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="center" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="VMp-yD-j3y">
@@ -48,7 +40,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="operation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PZX-ja-oJ5"/>
+                                                    <action selector="btnNum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TKq-6v-71e"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFU-B0-4Xb">
@@ -59,16 +51,15 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="operation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nza-DQ-Ss6"/>
+                                                    <action selector="btnNum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zgo-jH-V1k"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USI-FK-OxZ">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USI-FK-OxZ">
                                                 <rect key="frame" x="198" y="0.0" width="97" height="134"/>
                                                 <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="History">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="clock.fill" catalog="system">
+                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="btnHistory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QbG-Jy-rg0"/>
@@ -133,7 +124,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="operation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="si2-cK-HVY"/>
+                                                    <action selector="btnNum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J7i-Wa-3b2"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -183,7 +174,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="operation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T8r-fS-7cx"/>
+                                                    <action selector="btnNum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gz8-0f-iAi"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -233,7 +224,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="operation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cVD-u4-EDc"/>
+                                                    <action selector="btnNum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5h7-A0-Aly"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -271,7 +262,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="operation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="USK-Bu-x7g"/>
+                                                    <action selector="btnNum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dw5-Wu-VHJ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -422,4 +413,7 @@
             <point key="canvasLocation" x="1188" y="118"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clock.fill" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

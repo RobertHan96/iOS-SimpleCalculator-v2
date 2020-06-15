@@ -4,6 +4,7 @@ import RealmSwift
 import Toast_Swift
 
 class CalClass {
+    var operaters : [String] = ["+", "-", "*", "%"]
     var arraryTmp: [String] = [] //레이블로 입력된 텍스트값 임시 저장 배열
     var arraryOP: [String] = [] // 사용자가 누른 연산자 저장용 배열
     var arraryNum : [Float] = [] // arraryTmp의 문자를 반복문으로 돌린 후 Float로 저장하는 실제 값 배열
@@ -23,7 +24,7 @@ class CalClass {
     var tmpValue2 : String = "" // 사용자가 입력한 값을 임시로 저장하는 배열 : String
     // 계산과 관련된 모든 배열을 초기화하는 함수
     func clearData(label:UILabel) {
-        label.text = "0"
+        label.text = nil
         tmpValue1 = ""
         tmpValue2 = ""
         arraryOP.removeAll()
@@ -73,9 +74,7 @@ class CalClass {
         } // arrSize > 0 &&  < 3 이상인 조건 끝나는 부분
         else if arrSize >= 3 {
             calcCore(tmp1: 1, tmp2: 2, label: label)
-        } else {
-            print("예외상황 오류 발생 - calc에서 호출")
-        }
+        } 
         
     }
     
@@ -96,10 +95,11 @@ class CalClass {
         } else if arraryOP.last == "%" {
             label.text = String(Int(tmp2)%Int(tmp1))
         }
-        arraryTmp.removeAll()
         arraryOP.removeAll()
         // 계산결과를 arrayNum배열에 추가하고 프린트문으로 확인하는 부분
-        arraryNum.append(Float(label.text!)!)
+        let result = Float(label.text!)!
+        clearNumbers()
+        arraryNum.append(result)
         print("계산결과 : \(arraryNum.last!)")
         
         let realmValue = realm.objects(CalcHistory.self).last
