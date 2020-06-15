@@ -152,7 +152,8 @@ class MainViewController: UIViewController {
     }
     
     func setupUI(){
-        btnZero.layer.cornerRadius = btnZero.bounds.width/2
+        labelResult.adjustsFontSizeToFitWidth = true
+        btnZero.layer.cornerRadius = btnZero.bounds.width/4
         btnOne.layer.cornerRadius = btnOne.bounds.width/4
         btnTwo.layer.cornerRadius = btnTwo.bounds.width/4
         btnThree.layer.cornerRadius = btnThree.bounds.width/4
@@ -169,8 +170,8 @@ class MainViewController: UIViewController {
         btnMultiple.layer.cornerRadius = btnMultiple.bounds.width/4
         btnPlus.layer.cornerRadius = btnPlus.bounds.width/4
         btnMinus.layer.cornerRadius = btnMinus.bounds.width/4
-        btnEqual.layer.cornerRadius = btnEqual.bounds.width/2
-        btnPoint.layer.cornerRadius = btnPoint.bounds.width/2
+        btnEqual.layer.cornerRadius = btnEqual.bounds.width/4
+        btnPoint.layer.cornerRadius = btnPoint.bounds.width/4
 
     }
 }
