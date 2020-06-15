@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Main View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="MyCalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainView" customModule="MyCalc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,7 +260,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <state key="normal" title="=">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="heavy"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="btnNum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dw5-Wu-VHJ"/>
@@ -287,7 +286,7 @@
                     <navigationItem key="navigationItem" id="M99-aV-Jr9"/>
                     <connections>
                         <outlet property="btnClear" destination="exN-Af-jsY" id="W8w-ha-Xji"/>
-                        <outlet property="btnDivision" destination="Sjj-UV-srK" id="Oqb-54-YeD"/>
+                        <outlet property="btnDivision" destination="Sjj-UV-srK" id="qnw-DQ-IEr"/>
                         <outlet property="btnEight" destination="XAo-gZ-7w0" id="w9x-dY-NcK"/>
                         <outlet property="btnEqual" destination="DqY-Jg-Rsg" id="hxf-Z0-ZK8"/>
                         <outlet property="btnFive" destination="nfx-PN-bU3" id="SAT-xa-K9c"/>

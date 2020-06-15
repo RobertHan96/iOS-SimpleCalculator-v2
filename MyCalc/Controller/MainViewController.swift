@@ -13,6 +13,8 @@ let config = Realm.Configuration( //버전, 마이그레이션 관리용 코드
     })
 
 class MainViewController: UIViewController {
+    @IBOutlet weak var labelResult: UILabel!
+
     var num1 = ""
     var num2 = ""
     var floatNum1 : Float = 0
@@ -21,38 +23,17 @@ class MainViewController: UIViewController {
     var formula = ""
     var operaters : [String] = ["+", "-", "*", "%", "/", "X"]
     var numbers : [Float] = []
-    
-    @IBOutlet weak var labelResult: UILabel!
-    @IBOutlet weak var btnDivision: UIButton!
-    @IBOutlet weak var btnRemainder: UIButton!
-    @IBOutlet weak var btnHistory: UIButton!
-    @IBOutlet weak var btnClear: UIButton!
-    @IBOutlet weak var btnMultiple: UIButton!
-    @IBOutlet weak var btnPlus: UIButton!
-    @IBOutlet weak var btnMinus: UIButton!
-    @IBOutlet weak var btnEqual: UIButton!
-    @IBOutlet weak var btnPoint: UIButton!
-    
-    @IBOutlet weak var btnZero: UIButton!
-    @IBOutlet weak var btnOne: UIButton!
-    @IBOutlet weak var btnTwo: UIButton!
-    @IBOutlet weak var btnThree: UIButton!
-    @IBOutlet weak var btnFour: UIButton!
-    @IBOutlet weak var btnFive: UIButton!
-    @IBOutlet weak var btnSix: UIButton!
-    @IBOutlet weak var btnSeven: UIButton!
-    @IBOutlet weak var btnEight: UIButton!
-    @IBOutlet weak var btnNine: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         Realm.Configuration.defaultConfiguration = config
-        setupUI()
-}
+    }
     // 각 숫자들을 입력 받는 함수
     @IBAction func btnNum(_ sender : UIButton) {
         let input = sender.currentTitle!
-        if isCalculable(inputNum: input) == "1" {
+        if operaters.contains(sender.currentTitle!) == true && num1 == "" {
+            print("에러 : 연산자가 먼저 입력됨")
+        } else if isCalculable(inputNum: input) == "1" {
             labelResult.text! += input
             num1 += input
         } else if isCalculable(inputNum: input) == "2" {
@@ -147,31 +128,10 @@ class MainViewController: UIViewController {
         else if inputNum == "=" && num2 != "" {
             return "0"
         }
+        else if operaters.contains(inputNum) == true && num1 == ""
+        { return "-1" }
         
         return "-1"
     }
     
-    func setupUI(){
-        labelResult.adjustsFontSizeToFitWidth = true
-        btnZero.layer.cornerRadius = btnZero.bounds.width/4
-        btnOne.layer.cornerRadius = btnOne.bounds.width/4
-        btnTwo.layer.cornerRadius = btnTwo.bounds.width/4
-        btnThree.layer.cornerRadius = btnThree.bounds.width/4
-        btnFour.layer.cornerRadius = btnFour.bounds.width/4
-        btnFive.layer.cornerRadius = btnFive.bounds.width/4
-        btnSix.layer.cornerRadius = btnSix.bounds.width/4
-        btnSeven.layer.cornerRadius = btnSeven.bounds.width/4
-        btnEight.layer.cornerRadius = btnEight.bounds.width/4
-        btnNine.layer.cornerRadius = btnNine.bounds.width/4
-        btnClear.layer.cornerRadius = btnClear.bounds.width/4
-        btnHistory.layer.cornerRadius = btnHistory.bounds.width/4
-        btnRemainder.layer.cornerRadius = btnRemainder.bounds.width/4
-        btnDivision.layer.cornerRadius = btnDivision.bounds.width/4
-        btnMultiple.layer.cornerRadius = btnMultiple.bounds.width/4
-        btnPlus.layer.cornerRadius = btnPlus.bounds.width/4
-        btnMinus.layer.cornerRadius = btnMinus.bounds.width/4
-        btnEqual.layer.cornerRadius = btnEqual.bounds.width/4
-        btnPoint.layer.cornerRadius = btnPoint.bounds.width/4
-
-    }
 }
