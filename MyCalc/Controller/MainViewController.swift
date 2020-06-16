@@ -33,7 +33,8 @@ class MainViewController: UIViewController {
         } else if Cal.isCalculable(inputNum: input) == "3" {
             if Cal.op.count >= 1 {
                 print("에러 : 이미 입력한 연산자나 소수점이 존재함")
-                return
+            } else if Cal.num1.last == "." {
+                print("에러 : 소수 점 뒤 값 입력전에 연산자 입력 불가")
             } else {
                 labelResult.text! += input
                 Cal.op = input

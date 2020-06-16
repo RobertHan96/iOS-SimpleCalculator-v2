@@ -45,7 +45,13 @@ class CalClass {
         default:
             result = floatNum1 + floatNum2
         }
-        return String(result)
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.roundingMode = .floor         // 형식을 버림으로 지정
+        numberFormatter.minimumSignificantDigits = 2  // 자르길 원하는 자릿수
+        numberFormatter.maximumSignificantDigits = 2
+        
+        return numberFormatter.string(for: result) ?? ""
     }
     
     func clearNumbers() {
@@ -57,10 +63,19 @@ class CalClass {
         pointCount = 0
     }
 
+
+    
     func makePoint(lable : UILabel)  {
-        if lable.text == "" || lable.text?.contains(".") == true {
+        let countDot = lable.text!.filter { (char) -> Bool in
+            return char == "."}.count
+        
+        if lable.text == "" {
            print("에러 : 소수점을 추가할 값이 없음")
-       } else if lable.text != "" && num1 != "" && op != "" {
+        } else if  countDot == 1  && op == "" {
+            print("숫자 입력 전에 소수점을 표기할 수 없음")
+        } else if countDot >= 2 && num2 != "" {
+            print("에러 : 더 이상 소수점을 표기할 수 없음")
+        } else if lable.text != "" && num1 != "" && op != "" {
            print("에러 : 숫자입력전에 소수점을 추가할 수 없음")
        } else {
             pointCount += 1
