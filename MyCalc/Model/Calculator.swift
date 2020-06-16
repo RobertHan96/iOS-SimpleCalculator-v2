@@ -9,7 +9,6 @@ class CalClass {
     var op = "" // 현재 계산해야할 연산자를 저장하는 문자열
     var formula = "" // 계산한식 전체를 저장하는 문자열 => Realm 저장용
     var operaters : [String] = ["+", "-", "*", "%", "/", "X"]
-    var pointCount = 0 // 소수점 연속 입력을 막기 위한 체크용 정수
     
     func isCalculable(inputNum : String) -> String {
 //      첫번째값에 추가해야하는 경우 : 1,  두번째값인 경우 : 2, 연산기호일 경우 : 3을 결과로 리턴
@@ -60,34 +59,48 @@ class CalClass {
         floatNum1 = 0
         floatNum2 = 0
         op = ""
-        pointCount = 0
     }
 
-
+    func addPoint(lable : UILabel) {
+        lable.text! += "."
+        if Cal.num2 == "" {
+           Cal.num1 += "."
+        } else {
+           Cal.num2 += "."
+        }
+    }
     
     func makePoint(lable : UILabel)  {
         let countDot = lable.text!.filter { (char) -> Bool in
             return char == "."}.count
-        
-        if lable.text == "" {
-           print("에러 : 소수점을 추가할 값이 없음")
-        } else if  countDot == 1  && op == "" {
-            print("숫자 입력 전에 소수점을 표기할 수 없음")
-        } else if countDot >= 2 && num2 != "" {
-            print("에러 : 더 이상 소수점을 표기할 수 없음")
-        } else if lable.text != "" && num1 != "" && op != "" {
-           print("에러 : 숫자입력전에 소수점을 추가할 수 없음")
-       } else {
-            pointCount += 1
-            lable.text! += "."
-           if Cal.num2 == "" {
-               Cal.num1 += "."
-           } else {
-               Cal.num2 += "."
-           }
-       }
-       print("1번 숫자:\(Cal.num1), 2번 숫자:\(Cal.num2), 연산자:\(Cal.op)")
-   }
+        switch countDot {
+            case 0:
+                if num1 == "" {
+                    print("Error : 소수점을 추가할 수 있는 값이 없음")
+                }
+                else if num2 == "" && num1 != "" && op != "" {
+                    print("Error : 소수점을 추가할 수 있는 값이 없음")
+                } else {
+                    addPoint(lable: lable)
+            }
+            case 1:
+                if op == "" {
+                    print("Error : 첫번째 값에는 더 이상 소수점 추가 불가")
+                } else if num1.contains(".") == false {
+                    print("Error : 두번째 값에 더 이상 소수점 추가 불가")
+                } else if num2 == "" {
+                    print("Error : 두번째 값에 더 이상 소수점 추가 불가")
+                } else {
+                    addPoint(lable: lable)
+                }
+            case 2:
+                if num2 != "" && op != "" {
+                    print("Error : 두번째 값 입력 전에는 소수점 추가 불가")
+                }
+            default:
+                addPoint(lable: lable)
+            }
+    }
     // 계산식, 결과값을 Realm에 추가
     func saveData(fomula : String) {
         let realmModel = CalcHistory()
