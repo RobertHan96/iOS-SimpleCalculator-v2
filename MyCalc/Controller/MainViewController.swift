@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
     
     // 숫자, 연산자, = 을 입력 받아 리턴 코드에 따른 작업을 수행하는 함수
     @IBAction func btnNum(_ sender : UIButton) {
-        let input = sender.currentTitle! // 숫자보다 연산자가 먼저 입력됐는지 검사
+        guard let input = sender.currentTitle else {return }// 숫자보다 연산자가 먼저 입력됐는지 검사
         if Cal.operaters.contains(input) == true && Cal.num1 == "" {
             print("에러 : 연산자가 먼저 입력됨")
         }else if Cal.isCalculable(inputNum: input) == "1" {
@@ -33,13 +33,16 @@ class MainViewController: UIViewController {
         } else if Cal.isCalculable(inputNum: input) == "3" {
             if Cal.op.count >= 1 {
                 print("에러 : 이미 입력한 연산자나 소수점이 존재함")
-            } else if Cal.num1.last == "." {
+            } else if Cal.num1.last == "."{
                 print("에러 : 소수 점 뒤 값 입력전에 연산자 입력 불가")
             } else {
                 labelResult.text! += input
                 Cal.op = input
             }
         } else if Cal.isCalculable(inputNum: input) == "0" {
+            if Cal.num1.last == "." || Cal.num2.last == "." {
+                print("에러 : 소수 점 뒤 값 입력전에 계산 불가")
+            } else {
                 Cal.floatNum1 = Float(Cal.num1)!
                 Cal.floatNum2 = Float(Cal.num2)!
                 let calcResult = Cal.calc()
@@ -48,6 +51,8 @@ class MainViewController: UIViewController {
                 Cal.clearNumbers()
                 Cal.num1 = calcResult
                 Cal.saveData(fomula: Cal.formula)
+            }
+
         } else {
             print("에러 : 계산을 수행하지 못함")
         }

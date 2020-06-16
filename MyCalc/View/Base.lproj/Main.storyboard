@@ -331,7 +331,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="c1X-OJ-bbC">
-                                <rect key="frame" x="0.0" y="65" width="414" height="733"/>
+                                <rect key="frame" x="0.0" y="55" width="414" height="743"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTabelViewCell" rowHeight="83" id="S2k-TJ-hsg" customClass="HistoryTableViewCell" customModule="MyCalc" customModuleProvider="target">
@@ -393,7 +393,7 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="c1X-OJ-bbC" firstAttribute="top" secondItem="cRV-tR-IKX" secondAttribute="bottom" constant="20" id="9Dj-H6-O24"/>
+                            <constraint firstItem="c1X-OJ-bbC" firstAttribute="top" secondItem="cRV-tR-IKX" secondAttribute="bottom" constant="10" id="9Dj-H6-O24"/>
                             <constraint firstItem="c1X-OJ-bbC" firstAttribute="leading" secondItem="e4i-Np-YS9" secondAttribute="leading" id="9Ga-4H-plU"/>
                             <constraint firstItem="e4i-Np-YS9" firstAttribute="trailing" secondItem="c1X-OJ-bbC" secondAttribute="trailing" id="FFt-8b-X2R"/>
                             <constraint firstItem="cRV-tR-IKX" firstAttribute="top" secondItem="e4i-Np-YS9" secondAttribute="top" constant="10" id="Zhm-x2-OAP"/>
