@@ -330,9 +330,11 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="c1X-OJ-bbC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1X-OJ-bbC">
                                 <rect key="frame" x="0.0" y="55" width="414" height="743"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="KEe-s7-rrQ"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="ZdL-2X-S6o"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTabelViewCell" rowHeight="83" id="S2k-TJ-hsg" customClass="HistoryTableViewCell" customModule="MyCalc" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="83"/>
