@@ -76,26 +76,26 @@ class CalClass {
         switch countDot {
             case 0:
                 if num1 == "" {
-                    print("Error : 소수점을 추가할 수 있는 값이 없음")
+                    print("[Log] 소수점을 추가할 수 있는 값이 없음")
                 }
                 else if num2 == "" && num1 != "" && op != "" {
-                    print("Error : 소수점을 추가할 수 있는 값이 없음")
+                    print("[Log] 소수점을 추가할 수 있는 값이 없음")
                 } else {
                     addPoint(lable: lable)
             }
             case 1:
                 if op == "" {
-                    print("Error : 첫번째 값에는 더 이상 소수점 추가 불가")
+                    print("[Log] 첫번째 값에는 더 이상 소수점 추가 불가")
                 } else if num1.contains(".") == false {
-                    print("Error : 두번째 값에 더 이상 소수점 추가 불가")
+                    print("[Log] 두번째 값에 더 이상 소수점 추가 불가")
                 } else if num2 == "" {
-                    print("Error : 두번째 값에 더 이상 소수점 추가 불가")
+                    print("[Log] 두번째 값에 더 이상 소수점 추가 불가")
                 } else {
                     addPoint(lable: lable)
                 }
             case 2:
                 if num2 != "" && op != "" {
-                    print("Error : 두번째 값 입력 전에는 소수점 추가 불가")
+                    print("[Log] 두번째 값 입력 전에는 소수점 추가 불가")
                 }
             default:
                 addPoint(lable: lable)
