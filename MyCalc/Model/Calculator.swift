@@ -46,9 +46,9 @@ class CalClass {
         }
         
         let numberFormatter = NumberFormatter()
-        numberFormatter.roundingMode = .floor         // 형식을 버림으로 지정
-        numberFormatter.minimumSignificantDigits = 2  // 자르길 원하는 자릿수
-        numberFormatter.maximumSignificantDigits = 2
+//        numberFormatter.roundingMode = .floor         // 형식을 버림으로 지정
+//        numberFormatter.minimumSignificantDigits = 2  // 자르길 원하는 자릿수
+//        numberFormatter.maximumSignificantDigits = 2
         
         return numberFormatter.string(for: result) ?? ""
     }

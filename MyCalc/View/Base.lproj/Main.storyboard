@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -62,7 +62,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="btnHistory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QbG-Jy-rg0"/>
-                                                    <segue destination="O1u-c1-0rT" kind="presentation" id="YH8-5s-TSq"/>
+                                                    <segue destination="O1u-c1-0rT" kind="presentation" modalPresentationStyle="fullScreen" id="YH8-5s-TSq"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exN-Af-jsY">
@@ -316,11 +316,11 @@
             <objects>
                 <viewController id="O1u-c1-0rT" customClass="HistoryViewController" customModule="MyCalc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YZe-Tw-5z3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRV-tR-IKX">
-                                <rect key="frame" x="20" y="10" width="95" height="35"/>
+                                <rect key="frame" x="20" y="54" width="95" height="35"/>
                                 <attributedString key="attributedText">
                                     <fragment content="History">
                                         <attributes>
@@ -331,7 +331,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1X-OJ-bbC">
-                                <rect key="frame" x="0.0" y="55" width="414" height="743"/>
+                                <rect key="frame" x="0.0" y="99" width="414" height="753"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="KEe-s7-rrQ"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="ZdL-2X-S6o"/>
@@ -392,9 +392,22 @@
                                     <outlet property="delegate" destination="O1u-c1-0rT" id="rh5-bb-J3v"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMU-QY-eni">
+                                <rect key="frame" x="359" y="54" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="9Hc-lv-cHo"/>
+                                    <constraint firstAttribute="width" constant="35" id="cJi-h3-76I"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="arrow.left" catalog="system"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="V0n-gi-xBy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="aMU-QY-eni" firstAttribute="centerY" secondItem="cRV-tR-IKX" secondAttribute="centerY" id="3tD-rQ-BUh"/>
                             <constraint firstItem="c1X-OJ-bbC" firstAttribute="top" secondItem="cRV-tR-IKX" secondAttribute="bottom" constant="10" id="9Dj-H6-O24"/>
                             <constraint firstItem="c1X-OJ-bbC" firstAttribute="leading" secondItem="e4i-Np-YS9" secondAttribute="leading" id="9Ga-4H-plU"/>
                             <constraint firstItem="e4i-Np-YS9" firstAttribute="trailing" secondItem="c1X-OJ-bbC" secondAttribute="trailing" id="FFt-8b-X2R"/>
@@ -402,6 +415,8 @@
                             <constraint firstItem="e4i-Np-YS9" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cRV-tR-IKX" secondAttribute="trailing" constant="100" id="chL-Ly-HYE"/>
                             <constraint firstItem="cRV-tR-IKX" firstAttribute="leading" secondItem="e4i-Np-YS9" secondAttribute="leading" constant="20" id="dRx-aW-k8h"/>
                             <constraint firstItem="e4i-Np-YS9" firstAttribute="bottom" secondItem="c1X-OJ-bbC" secondAttribute="bottom" constant="10" id="k67-pH-YE1"/>
+                            <constraint firstItem="aMU-QY-eni" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cRV-tR-IKX" secondAttribute="trailing" constant="30" id="oIX-3M-amz"/>
+                            <constraint firstItem="e4i-Np-YS9" firstAttribute="trailing" secondItem="aMU-QY-eni" secondAttribute="trailing" constant="20" id="y3X-I5-r7C"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e4i-Np-YS9"/>
                     </view>
@@ -412,10 +427,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5uy-Yb-gDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="118"/>
+            <point key="canvasLocation" x="1186.9565217391305" y="117.85714285714285"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="clock.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
