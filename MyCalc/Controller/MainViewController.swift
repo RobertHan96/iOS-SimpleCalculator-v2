@@ -22,9 +22,11 @@ class MainViewController: UIViewController {
     
     // 숫자, 연산자, = 을 입력 받아 리턴 코드에 따른 작업을 수행하는 함수
     @IBAction func btnNum(_ sender : UIButton) {
-        guard let inputLen = labelResult.text else { return}
-        if inputLen.count > 8 { print("[Log] 7자리 이상 숫자의 입력 불가")}
-        else {
+        guard let inputLen = labelResult.text else { return} // 입력받은 label nil 체크
+        if inputLen.count > 8 {
+            print("[Log] 7자리 이상 숫자의 입력 불가")
+            Anims.notifiyMaxTextLengthAnim(cv: self.view)
+        } else {
             guard let input = sender.currentTitle else {return }// 숫자보다 연산자가 먼저 입력됐는지 검사
             if Cal.operaters.contains(input) == true && Cal.num1 == "" {
                 print("[Log] 연산자가 먼저 입력됨")
@@ -47,14 +49,19 @@ class MainViewController: UIViewController {
                 if Cal.num1.last == "." || Cal.num2.last == "." {
                     print("[Log] 소수 점 뒤 값 입력전에 계산 불가")
                 } else {
-                    Cal.floatNum1 = Float(Cal.num1)!
-                    Cal.floatNum2 = Float(Cal.num2)!
-                    let calcResult = Cal.calc()
-                    labelResult.text! = calcResult
-                    Cal.formula = "\(Cal.num1)\(Cal.op)\(Cal.num2) = \(calcResult)"
-                    Cal.clearNumbers()
-                    Cal.num1 = calcResult
-                    Cal.saveData(fomula: Cal.formula)
+                    if Cal.num1 == "0" && Cal.num2 == "0" {
+                        print("[Log] 계산가능한 숫자가 모자람")
+                    }
+                    else {
+                        Cal.floatNum1 = Float(Cal.num1)!
+                        Cal.floatNum2 = Float(Cal.num2)!
+                        let calcResult = Cal.calc()
+                        labelResult.text! = calcResult
+                        Cal.formula = "\(Cal.num1)\(Cal.op)\(Cal.num2) = \(calcResult)"
+                        Cal.clearNumbers()
+                        Cal.num1 = calcResult
+                        Cal.saveData(fomula: Cal.formula)
+                    }
                 }
 
             } else {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0406E2FB2394EEE9001B5D42 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0406E2FA2394EEE9001B5D42 /* Calculator.swift */; };
+		040FA3A824B6EBB900E82EE2 /* Anims.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FA3A724B6EBB900E82EE2 /* Anims.swift */; };
 		0419BE8B23794BA700075EA8 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0419BE8A23794BA700075EA8 /* HistoryViewController.swift */; };
 		04533A5B2373BF7200410C2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04533A5A2373BF7200410C2C /* AppDelegate.swift */; };
 		04533A5D2373BF7200410C2C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04533A5C2373BF7200410C2C /* MainViewController.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		0406E2FA2394EEE9001B5D42 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		040FA3A724B6EBB900E82EE2 /* Anims.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anims.swift; sourceTree = "<group>"; };
 		0419BE8A23794BA700075EA8 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		04533A572373BF7200410C2C /* MyCalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04533A5A2373BF7200410C2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				0406E2FA2394EEE9001B5D42 /* Calculator.swift */,
+				040FA3A724B6EBB900E82EE2 /* Anims.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0419BE8B23794BA700075EA8 /* HistoryViewController.swift in Sources */,
+				040FA3A824B6EBB900E82EE2 /* Anims.swift in Sources */,
 				0492D3AA24973C020009B6DC /* MainView.swift in Sources */,
 				04533A5D2373BF7200410C2C /* MainViewController.swift in Sources */,
 				04D34637237D10EC0069962B /* HistoryTableViewCell.swift in Sources */,
@@ -409,7 +413,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = KQS5CL5P74;
 				INFOPLIST_FILE = MyCalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -431,7 +435,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = KQS5CL5P74;
 				INFOPLIST_FILE = MyCalc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

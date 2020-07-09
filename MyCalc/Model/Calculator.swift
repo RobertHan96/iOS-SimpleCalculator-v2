@@ -44,13 +44,12 @@ class CalClass {
         default:
             result = floatNum1 + floatNum2
         }
-        
         let numberFormatter = NumberFormatter()
-//        numberFormatter.roundingMode = .floor         // 형식을 버림으로 지정
-//        numberFormatter.minimumSignificantDigits = 2  // 자르길 원하는 자릿수
-//        numberFormatter.maximumSignificantDigits = 2
+        numberFormatter.roundingMode = .floor         // 형식을 버림으로 지정
+        numberFormatter.minimumSignificantDigits = 2  // 자르길 원하는 자릿수
+        numberFormatter.maximumSignificantDigits = 2  
         
-        return numberFormatter.string(for: result) ?? ""
+        return numberFormatter.string(from: NSNumber(value: result)) ?? ""
     }
     
     func clearNumbers() {
@@ -62,6 +61,7 @@ class CalClass {
     }
 
     func addPoint(lable : UILabel) {
+        guard lable.text != nil else { return } // 입력받은 레이블 nil 체크
         lable.text! += "."
         if Cal.num2 == "" {
            Cal.num1 += "."
@@ -71,6 +71,7 @@ class CalClass {
     }
     
     func makePoint(lable : UILabel)  {
+        guard lable.text != nil else { return } // 입력받은 레이블 nil 체크
         let countDot = lable.text!.filter { (char) -> Bool in
             return char == "."}.count
         switch countDot {
