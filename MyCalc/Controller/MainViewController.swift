@@ -23,8 +23,8 @@ class MainViewController: UIViewController {
     // 숫자, 연산자, = 을 입력 받아 리턴 코드에 따른 작업을 수행하는 함수
     @IBAction func btnNum(_ sender : UIButton) {
         guard let inputLen = labelResult.text else { return} // 입력받은 label nil 체크
-        if inputLen.count > 8 {
-            print("[Log] 7자리 이상 숫자의 입력 불가")
+        if inputLen.count > 10 {
+            print("[Log] 9자리 이상 수식 입력 불가")
             Anims.notifiyMaxTextLengthAnim(cv: self.view)
         } else {
             guard let input = sender.currentTitle else {return }// 숫자보다 연산자가 먼저 입력됐는지 검사

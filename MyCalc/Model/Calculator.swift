@@ -44,12 +44,9 @@ class CalClass {
         default:
             result = floatNum1 + floatNum2
         }
-        let numberFormatter = NumberFormatter()
-        numberFormatter.roundingMode = .floor         // 형식을 버림으로 지정
-        numberFormatter.minimumSignificantDigits = 2  // 자르길 원하는 자릿수
-        numberFormatter.maximumSignificantDigits = 2  
-        
-        return numberFormatter.string(from: NSNumber(value: result)) ?? ""
+        let displayNumberConverter = DisplayNumberConverter(number: result)
+
+        return displayNumberConverter.convertNumberToDisplayString()
     }
     
     func clearNumbers() {
