@@ -9,7 +9,7 @@ class MainView: MainViewController {
     @IBOutlet weak var btnMinus: UIButton!
     @IBOutlet weak var btnEqual: UIButton!
     @IBOutlet weak var btnPoint: UIButton!
-    @IBOutlet weak var btnDivision: UILabel!
+    @IBOutlet weak var btnDivision: UIButton!
 
     @IBOutlet weak var btnZero: UIButton!
     @IBOutlet weak var btnOne: UIButton!
@@ -28,25 +28,71 @@ class MainView: MainViewController {
     }
 
     func setupUI(){
-        btnZero.layer.cornerRadius = btnZero.bounds.width/4
-        btnOne.layer.cornerRadius = btnOne.bounds.width/4
-        btnTwo.layer.cornerRadius = btnTwo.bounds.width/4
-        btnThree.layer.cornerRadius = btnThree.bounds.width/4
-        btnFour.layer.cornerRadius = btnFour.bounds.width/4
-        btnFive.layer.cornerRadius = btnFive.bounds.width/4
-        btnSix.layer.cornerRadius = btnSix.bounds.width/4
-        btnSeven.layer.cornerRadius = btnSeven.bounds.width/4
-        btnEight.layer.cornerRadius = btnEight.bounds.width/4
-        btnNine.layer.cornerRadius = btnNine.bounds.width/4
-        btnClear.layer.cornerRadius = btnClear.bounds.width/4
-        btnHistory.layer.cornerRadius = btnHistory.bounds.width/4
-        btnRemainder.layer.cornerRadius = btnRemainder.bounds.width/4
-        btnDivision.layer.cornerRadius = btnDivision.bounds.width/4
-        btnMultiple.layer.cornerRadius = btnMultiple.bounds.width/4
-        btnPlus.layer.cornerRadius = btnPlus.bounds.width/4
-        btnMinus.layer.cornerRadius = btnMinus.bounds.width/4
-        btnEqual.layer.cornerRadius = btnEqual.bounds.width/4
-        btnPoint.layer.cornerRadius = btnPoint.bounds.width/4
+        let buttons : [UIButton?] = [
+            btnZero, btnOne, btnTwo, btnThree, btnFour ,btnFive, btnSix, btnSeven, btnEight, btnNine, btnRemainder, btnHistory, btnClear, btnMultiple,
+            btnPlus, btnMinus, btnMultiple, btnEqual, btnPoint, btnDivision
+        ]
+        let model = UIDevice.current.model
+        let deviceScrrenSize = UIScreen.main.bounds
+        print("[Log] 디바이스 정보",model, deviceScrrenSize)
+
+        let btnImageSize = btnHistory.bounds.height/4
+        btnHistory.imageEdgeInsets = UIEdgeInsets(top: btnImageSize, left: btnImageSize, bottom: btnImageSize, right: btnImageSize)
+        
+        for button in buttons {
+            if let btn = button {
+                btn.setFontSizeDependOnScreenSize()
+                btn.layer.cornerRadius = btn.bounds.width/4
+                btn.titleLabel?.adjustsFontForContentSizeCategory = true
+                btn.titleLabel?.adjustsFontSizeToFitWidth = true
+            }
+        }
+        
     }
     
+}
+
+
+extension UIButton {
+    func setFontSizeDependOnScreenSize() {
+        let bounds = UIScreen.main.bounds
+        let height = bounds.size.height
+        let standardFontSize : CGFloat = 70
+        var calculatedFont = UIFont.systemFont(ofSize: standardFontSize)
+          switch height {
+          case 480.0: //Iphone 3,4S => 3.5 inch
+            calculatedFont = UIFont.systemFont(ofSize: 30)
+            resizeFont(calculatedFont: calculatedFont)
+            break
+          case 568.0: //iphone 5, SE => 4 inch
+            calculatedFont = UIFont.systemFont(ofSize: 30)
+            resizeFont(calculatedFont: calculatedFont)
+            break
+          case 667.0: //iphone 6, 6s, 7, 8 => 4.7 inch
+            calculatedFont = UIFont.systemFont(ofSize: 40)
+            resizeFont(calculatedFont: calculatedFont)
+            break
+          case 736.0: //iphone 6s+ 6+, 7+, 8+ => 5.5 inch
+            calculatedFont = UIFont.systemFont(ofSize: 50)
+            resizeFont(calculatedFont: calculatedFont)
+            break
+          case 812.0: //iphone X, XS => 5.8 inch
+            calculatedFont = UIFont.systemFont(ofSize: 70)
+            resizeFont(calculatedFont: calculatedFont)
+            break
+          case 896.0: //iphone XR => 6.1 inch  // iphone XS MAX => 6.5 inch
+            calculatedFont = UIFont.systemFont(ofSize: 70)
+            resizeFont(calculatedFont: calculatedFont)
+            break
+          default:
+            calculatedFont = UIFont.systemFont(ofSize: 100)
+            resizeFont(calculatedFont: calculatedFont)
+            break
+          }
+        }
+
+    func resizeFont(calculatedFont: UIFont?) {
+        self.titleLabel?.font = calculatedFont
+    }
+
 }

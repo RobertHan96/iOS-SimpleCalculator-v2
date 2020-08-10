@@ -53,12 +53,13 @@
                                                     <action selector="btnNum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zgo-jH-V1k"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USI-FK-OxZ">
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USI-FK-OxZ">
                                                 <rect key="frame" x="202" y="0.0" width="91" height="110"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                <state key="normal" image="clock.fill" catalog="system">
+                                                <state key="normal" image="time">
                                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="btnHistory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QbG-Jy-rg0"/>
@@ -68,7 +69,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exN-Af-jsY">
                                                 <rect key="frame" x="303" y="0.0" width="91" height="110"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="70"/>
                                                 <state key="normal" title="C">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="heavy"/>
@@ -314,7 +315,7 @@
         <!--History View Controller-->
         <scene sceneID="KsF-39-Izv">
             <objects>
-                <viewController id="O1u-c1-0rT" customClass="HistoryViewController" customModule="MyCalc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="O1u-c1-0rT" customClass="HistoryViewController" customModule="MyCalc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YZe-Tw-5z3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -324,20 +325,22 @@
                                 <attributedString key="attributedText">
                                     <fragment content="History">
                                         <attributes>
+                                            <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="30" name="NanumGothic"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1X-OJ-bbC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1X-OJ-bbC">
                                 <rect key="frame" x="0.0" y="99" width="414" height="753"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="KEe-s7-rrQ"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="ZdL-2X-S6o"/>
+                                <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTabelViewCell" rowHeight="83" id="S2k-TJ-hsg" customClass="HistoryTableViewCell" customModule="MyCalc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="414" height="83"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S2k-TJ-hsg" id="zUe-DP-Dfq">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
@@ -348,7 +351,7 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="2019-01-01">
                                                             <attributes>
-                                                                <color key="NSColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <font key="NSFont" size="18" name="NanumGothic"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
@@ -361,7 +364,9 @@
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
+                                                                <color key="NSColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <font key="NSFont" size="18" name="NanumGothic"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
                                                     </attributedString>
@@ -373,6 +378,7 @@
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f3B-ex-nvG" secondAttribute="trailing" constant="100" id="9Ng-Uu-y0b"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="irw-45-daX" secondAttribute="bottom" constant="10" id="B6H-jQ-RgW"/>
                                             <constraint firstItem="irw-45-daX" firstAttribute="leading" secondItem="S2k-TJ-hsg" secondAttribute="leading" constant="20" id="CWA-F3-eJu"/>
@@ -398,14 +404,14 @@
                                     <constraint firstAttribute="height" constant="35" id="9Hc-lv-cHo"/>
                                     <constraint firstAttribute="width" constant="35" id="cJi-h3-76I"/>
                                 </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="arrow.left" catalog="system"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="&lt;"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="V0n-gi-xBy"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="aMU-QY-eni" firstAttribute="centerY" secondItem="cRV-tR-IKX" secondAttribute="centerY" id="3tD-rQ-BUh"/>
                             <constraint firstItem="c1X-OJ-bbC" firstAttribute="top" secondItem="cRV-tR-IKX" secondAttribute="bottom" constant="10" id="9Dj-H6-O24"/>
@@ -431,7 +437,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
-        <image name="clock.fill" catalog="system" width="128" height="121"/>
+        <image name="time" width="128" height="128"/>
     </resources>
 </document>
