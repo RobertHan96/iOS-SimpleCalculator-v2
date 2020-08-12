@@ -10,7 +10,6 @@ class MainView: MainViewController {
     @IBOutlet weak var btnEqual: UIButton!
     @IBOutlet weak var btnPoint: UIButton!
     @IBOutlet weak var btnDivision: UIButton!
-
     @IBOutlet weak var btnZero: UIButton!
     @IBOutlet weak var btnOne: UIButton!
     @IBOutlet weak var btnTwo: UIButton!
@@ -24,22 +23,18 @@ class MainView: MainViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDeviceOrientationNotificaition()
-        printDeviceScrrenInformations()
+        setupUI()
     }
     
-    func setDeviceOrientationNotificaition() {
+    func setupUI() {
         var didRotate: (Notification) -> Void = { notification in
             switch UIDevice.current.orientation {
             case .landscapeLeft, .landscapeRight:
-                print("landscape")
-                self.setupUI(orientaion: "landscape")
+                self.setProperAutolayoutByOrientation(orientaion: "landscape")
             case .portrait, .portraitUpsideDown:
-                print("Portrait")
-                self.setupUI(orientaion: "portrait")
+                self.setProperAutolayoutByOrientation(orientaion: "portrait")
             default:
-                print("other")
-                self.setupUI(orientaion: "landscape")
+                self.setProperAutolayoutByOrientation(orientaion: "landscape")
             }
         }
         
@@ -49,16 +44,16 @@ class MainView: MainViewController {
         using: didRotate)
     }
 
-    func setupUI(orientaion : String){
+    func setProperAutolayoutByOrientation(orientaion : String){
         let buttons : [UIButton?] = [
             btnZero, btnOne, btnTwo, btnThree, btnFour ,btnFive, btnSix, btnSeven, btnEight, btnNine, btnRemainder, btnHistory, btnClear, btnMultiple,
             btnPlus, btnMinus, btnMultiple, btnEqual, btnPoint, btnDivision
         ]
+        let historyButtonInsetsDivider = getButtonInsetsDivider()
+        let historyButtonImageInsetValue = btnHistory.bounds.width/historyButtonInsetsDivider
+        btnHistory.imageEdgeInsets = UIEdgeInsets(top: historyButtonImageInsetValue, left: historyButtonImageInsetValue, bottom: historyButtonImageInsetValue, right: historyButtonImageInsetValue)
         
-        if orientaion == "landscape" {
-            let buttonInsetsDivider = getButtonInsetsDivider()
-            let btnImageSize = btnHistory.bounds.width/buttonInsetsDivider
-            btnHistory.imageEdgeInsets = UIEdgeInsets(top: btnImageSize, left: btnImageSize, bottom: btnImageSize, right: btnImageSize)
+        if orientaion == "landscape" { //화면 방향에 따라 다르게 적용해야할 레이아웃 관련 옵션들 적용
             for button in buttons {
                 if let btn = button {
                     btn.setFontSizeDependOnScreenSize(standardFontSize: 25)
@@ -67,11 +62,7 @@ class MainView: MainViewController {
                     btn.titleLabel?.adjustsFontSizeToFitWidth = true
                 }
             }
-
         } else {
-            let buttonInsetsDivider = getButtonInsetsDivider()
-            let btnImageSize = btnHistory.bounds.width/buttonInsetsDivider
-            btnHistory.imageEdgeInsets = UIEdgeInsets(top: btnImageSize, left: btnImageSize, bottom: btnImageSize, right: btnImageSize)
             for button in buttons {
                 if let btn = button {
                     btn.setFontSizeDependOnScreenSize(standardFontSize: 60)
@@ -81,48 +72,28 @@ class MainView: MainViewController {
                 }
             }
         }
-        
     }
     
     func getButtonInsetsDivider() -> CGFloat{
         let currentDeviceModel = UIDevice.current.model
         switch currentDeviceModel {
-        case "iPhone":
-            return 4
-            break
-        case "iPad":
-            return 2
-            break
-        default:
-            return 4
+            case "iPhone":
+                return 4
+            case "iPad":
+                return 2
+            default:
+                return 4
         }
     }
-    
-    
-    func printDeviceScrrenInformations() {
-        let model = UIDevice.current.model
-        let deviceScrrenSize = UIScreen.main.bounds
-        print("[Log] 디바이스 정보",model, deviceScrrenSize)
-    }
-    
-    func changeButtonsBoderRadius(buttons : [UIButton?]){
-        for button in buttons {
-            if let btn = button {
-                btn.layer.cornerRadius = 10
-            }
-        }
-    }
-    
 }
-
+    
 extension UIButton {
     func setFontSizeDependOnScreenSize(standardFontSize : CGFloat) {
-        let bounds = UIScreen.main.bounds
-        let height = bounds.size.height
-        let standardFontSize : CGFloat = standardFontSize // iphone11ProMax
+        let currentDeviceHeight = UIScreen.main.bounds.size.height
+        let standardFontSize : CGFloat = standardFontSize // iphone 11Pro Max 기준
         var calculatedFont = UIFont.systemFont(ofSize: standardFontSize)
         
-        switch height {
+        switch currentDeviceHeight {
             case 480.0: //iphone 3,4S => 3.5 inch
                 calculatedFont = UIFont.systemFont(ofSize: standardFontSize * 0.5)
                 resizeFont(calculatedFont: calculatedFont)
