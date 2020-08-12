@@ -56,13 +56,12 @@ class MainView: MainViewController {
         ]
         
         if orientaion == "landscape" {
-            let btnImageSize = btnHistory.bounds.height/4
-            
+            let buttonInsetsDivider = getButtonInsetsDivider()
+            let btnImageSize = btnHistory.bounds.width/buttonInsetsDivider
             btnHistory.imageEdgeInsets = UIEdgeInsets(top: btnImageSize, left: btnImageSize, bottom: btnImageSize, right: btnImageSize)
-                    
             for button in buttons {
                 if let btn = button {
-//                    btn.setFontSizeDependOnScreenSize()
+                    btn.setFontSizeDependOnScreenSize(standardFontSize: 25)
                     btn.layer.cornerRadius = 10
                     btn.titleLabel?.adjustsFontForContentSizeCategory = true
                     btn.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -70,20 +69,33 @@ class MainView: MainViewController {
             }
 
         } else {
-            let btnImageSize = btnHistory.bounds.height/4
-            
+            let buttonInsetsDivider = getButtonInsetsDivider()
+            let btnImageSize = btnHistory.bounds.width/buttonInsetsDivider
             btnHistory.imageEdgeInsets = UIEdgeInsets(top: btnImageSize, left: btnImageSize, bottom: btnImageSize, right: btnImageSize)
-                    
             for button in buttons {
                 if let btn = button {
-                    btn.setFontSizeDependOnScreenSize()
-                    btn.layer.cornerRadius = btn.bounds.width/4
+                    btn.setFontSizeDependOnScreenSize(standardFontSize: 60)
+                    btn.layer.cornerRadius = 10
                     btn.titleLabel?.adjustsFontForContentSizeCategory = true
                     btn.titleLabel?.adjustsFontSizeToFitWidth = true
                 }
             }
         }
         
+    }
+    
+    func getButtonInsetsDivider() -> CGFloat{
+        let currentDeviceModel = UIDevice.current.model
+        switch currentDeviceModel {
+        case "iPhone":
+            return 4
+            break
+        case "iPad":
+            return 2
+            break
+        default:
+            return 4
+        }
     }
     
     
@@ -104,10 +116,10 @@ class MainView: MainViewController {
 }
 
 extension UIButton {
-    func setFontSizeDependOnScreenSize() {
+    func setFontSizeDependOnScreenSize(standardFontSize : CGFloat) {
         let bounds = UIScreen.main.bounds
         let height = bounds.size.height
-        let standardFontSize : CGFloat = 60 // iphone11ProMax
+        let standardFontSize : CGFloat = standardFontSize // iphone11ProMax
         var calculatedFont = UIFont.systemFont(ofSize: standardFontSize)
         
         switch height {
