@@ -11,8 +11,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     let realm = try! Realm()
     var DateArrary : Results<CalcHistory>?
-//    let test = realm.objects(CalcHistory.self)
-//    var sortedDate =  test.sorted(byKeyPath: "date", ascending: false)
     
     func loadData() {
         DateArrary = realm.objects(CalcHistory.self).sorted(byKeyPath: "date", ascending: true)
@@ -40,8 +38,5 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         loadData()
         super.viewDidLoad()
-
-        
     }
-
 }

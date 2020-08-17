@@ -23,25 +23,34 @@ class MainView: MainViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        rotated()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+    }
+
+    @objc func rotated() {
+        switch UIDevice.current.orientation {
+        case .landscapeLeft, .landscapeRight:
+            setupUI(orientation: "Landscape")
+        case .portrait:
+            setupUI(orientation: "Portrait")
+        default:
+            setupUI(orientation: "Landscape")
+        }
     }
     
-    func setupUI() {
-        var didRotate: (Notification) -> Void = { notification in
-            switch UIDevice.current.orientation {
-            case .landscapeLeft, .landscapeRight:
-                self.setProperAutolayoutByOrientation(orientaion: "landscape")
-            case .portrait, .portraitUpsideDown:
-                self.setProperAutolayoutByOrientation(orientaion: "portrait")
-            default:
-                self.setProperAutolayoutByOrientation(orientaion: "landscape")
-            }
+    func setupUI(orientation : String) {
+        switch orientation {
+        case "Landscape":
+            self.setProperAutolayoutByOrientation(orientaion: "landscape")
+        case "Portrait":
+            self.setProperAutolayoutByOrientation(orientaion: "portrait")
+        default:
+            self.setProperAutolayoutByOrientation(orientaion: "portrait")
         }
-        
-        NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification,
-        object: nil,
-        queue: .main,
-        using: didRotate)
     }
 
     func setProperAutolayoutByOrientation(orientaion : String){
@@ -49,10 +58,6 @@ class MainView: MainViewController {
             btnZero, btnOne, btnTwo, btnThree, btnFour ,btnFive, btnSix, btnSeven, btnEight, btnNine, btnRemainder, btnHistory, btnClear, btnMultiple,
             btnPlus, btnMinus, btnMultiple, btnEqual, btnPoint, btnDivision
         ]
-        let historyButtonInsetsDivider = getButtonInsetsDivider()
-        let historyButtonImageInsetValue = btnHistory.bounds.width/historyButtonInsetsDivider
-        btnHistory.imageEdgeInsets = UIEdgeInsets(top: historyButtonImageInsetValue, left: historyButtonImageInsetValue, bottom: historyButtonImageInsetValue, right: historyButtonImageInsetValue)
-        
         if orientaion == "landscape" { //화면 방향에 따라 다르게 적용해야할 레이아웃 관련 옵션들 적용
             for button in buttons {
                 if let btn = button {
@@ -75,16 +80,20 @@ class MainView: MainViewController {
     }
     
     func getButtonInsetsDivider() -> CGFloat{
+        let buttonInsetValueForIphone : CGFloat = 4
+        let buttonInsetValueForIpad : CGFloat = 2
         let currentDeviceModel = UIDevice.current.model
+        
         switch currentDeviceModel {
             case "iPhone":
-                return 4
+                return buttonInsetValueForIphone
             case "iPad":
-                return 2
+                return buttonInsetValueForIpad
             default:
-                return 4
+                return buttonInsetValueForIphone
         }
     }
+    
 }
     
 extension UIButton {
